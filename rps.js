@@ -7,7 +7,7 @@ game fn for 5 rounds
 */ 
 
 let playerSelection;
-
+let score = 5;
 
 function capitalize(baaa)
 {
@@ -44,9 +44,11 @@ computerSelection = computerPlay(getRndInteger());
 
 function getResult(abc){
     if (abc==="win"){
+        score++;
         return("You Won! " + playerSelection + " beats " + computerSelection);
     }
     else if (abc==="loss"){
+        score--;
         return("You Lose! " + computerSelection + " beats " + playerSelection);
     }
 }
@@ -84,3 +86,9 @@ function game(){
 }
 
 game();
+if (score<5){
+    alert("You lost this game of 5 rounds!");
+}
+else {
+    alert("You won this game of 5 rounds!")
+}
