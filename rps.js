@@ -4,8 +4,6 @@ generate random number from 1 2 3 and return r p s.
 won or lose based on selection
     case insensitive
 game fn for 5 rounds
-
-aage ka idea play with yourself from previous round (first round tie)
 */ 
 
 let playerSelection;
@@ -41,7 +39,7 @@ function computerPlay(a){
 
 
 let computerSelection;
-
+computerSelection = computerPlay(getRndInteger());
 //console.log(computerSelection);
 
 function getResult(abc){
@@ -72,15 +70,16 @@ function playRound(i,u){
     }
 }
 
-
 function game(){
     for(let i = 0; i<5; i++){
 
-        playerSelection = prompt("Input rock paper or scissor!", "All the best");
+        playerSelection = prompt("Can you figure out how to win every game?","Type rock, paper or scissor!");
         playerSelection=capitalize(playerSelection);
-        computerSelection = computerPlay(getRndInteger());
+        //computerSelection = computerPlay(getRndInteger());
         let showResult = playRound(playerSelection,computerSelection);
         console.log(showResult);
+        //newmode
+        computerSelection = playerSelection; 
     }
 }
 
