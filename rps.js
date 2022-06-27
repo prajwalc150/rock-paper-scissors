@@ -39,7 +39,7 @@ function computerPlay(a){
 
 
 let computerSelection;
-computerSelection = computerPlay(getRndInteger());
+//computerSelection = computerPlay(getRndInteger());
 //console.log(computerSelection);
 
 function getResult(abc){
@@ -57,38 +57,73 @@ function playRound(i,u){
         return("Tie!");
     }
     else if(i==="Rock"){
-        if(u==="Paper"){console.log(getResult("loss"));}
-        else if(u==="Scissor"){console.log(getResult("win"));}
+        if(u==="Paper"){return(getResult("loss"));}
+        else if(u==="Scissor"){return(getResult("win"));}
     }
     
     else if(i==="Paper"){
-        if(u==="Scissor"){console.log(getResult("loss"));}
-        else if(u==="Rock"){console.log(getResult("win"));}
+        if(u==="Scissor"){return(getResult("loss"));}
+        else if(u==="Rock"){return(getResult("win"));}
     }
 
     else if(i==="Scissor"){
-        if(u==="Rock"){console.log(getResult("loss"));}
-        else if(u==="Paper"){console.log(getResult("win"));}
+        if(u==="Rock"){return(getResult("loss"));}
+        else if(u==="Paper"){return(getResult("win"));}
     }
 }
 
-function game(){
-    for(let i = 0; i<5; i++){
+function gamer(){
+    //for(let i = 0; i<5; i++){
 
-        playerSelection = prompt("Can you figure out how to win every game?","Type rock, paper or scissor!");
-        playerSelection=capitalize(playerSelection);
-        //computerSelection = computerPlay(getRndInteger());
+        //playerSelection = prompt("Can you figure out how to win every game?","Type rock, paper or scissor!");
+        //playerSelection=capitalize(playerSelection);
+        
+        computerSelection = computerPlay(getRndInteger());
+        
+        //let showResult = playRound(playerSelection,computerSelection);
+       
+        //console.log(showResult);
+        playerSelection = "Rock";
         let showResult = playRound(playerSelection,computerSelection);
-        console.log(showResult);
+        //console.log("result is "+showResult);
+        result.textContent = `${showResult}`;
         //newmode
-        computerSelection = playerSelection; 
-    }
+        //computerSelection = playerSelection; 
+    //}
+}
+function gamep(){
+        computerSelection = computerPlay(getRndInteger());
+        playerSelection = "Paper";
+        let showResult = playRound(playerSelection,computerSelection);
+        //console.log("result is "+showResult);
+        result.textContent = `${showResult}`;
 }
 
-game();
-if (score<5){
+function games(){
+    computerSelection = computerPlay(getRndInteger());
+    playerSelection = "Scissor";
+    let showResult = playRound(playerSelection,computerSelection);
+    //console.log("result is "+showResult);
+    result.textContent = `${showResult}`;
+}
+//game();
+function alertFunction() {
+    alert("YAY! YOU DID IT!");
+  }
+rock.addEventListener('click', gamer);
+paper.addEventListener('click', gamep);
+scissor.addEventListener('click', games);
+
+const body = document.querySelector('#body');
+
+const result = document.createElement('div');
+result.classList.add('result');
+//result.textContent = `${showResult}`;
+
+body.appendChild(result);
+/*if (score<5){
     alert("You lost this game of 5 rounds!");
 }
 else {
     alert("You won this game of 5 rounds!")
-}
+}*/
