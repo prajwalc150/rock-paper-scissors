@@ -7,7 +7,8 @@ game fn for 5 rounds
 */ 
 
 let playerSelection;
-let score = 5;
+let score1 = 0;
+let score2 = 0;
 
 function capitalize(baaa)
 {
@@ -44,11 +45,11 @@ let computerSelection;
 
 function getResult(abc){
     if (abc==="win"){
-        score++;
+        score1++;
         return("You Won! " + playerSelection + " beats " + computerSelection);
     }
     else if (abc==="loss"){
-        score--;
+        score2++;
         return("You Lose! " + computerSelection + " beats " + playerSelection);
     }
 }
@@ -81,35 +82,42 @@ function gamer(){
         computerSelection = computerPlay(getRndInteger());
         
         //let showResult = playRound(playerSelection,computerSelection);
-       
+    
         //console.log(showResult);
         playerSelection = "Rock";
         let showResult = playRound(playerSelection,computerSelection);
         //console.log("result is "+showResult);
-        result.textContent = `${showResult}`;
         //newmode
         //computerSelection = playerSelection; 
     //}
+        winner();
+        result.textContent = `You: ${score1} Computer: ${score2} ${showResult}`;
 }
 function gamep(){
         computerSelection = computerPlay(getRndInteger());
         playerSelection = "Paper";
         let showResult = playRound(playerSelection,computerSelection);
         //console.log("result is "+showResult);
-        result.textContent = `${showResult}`;
+        winner();
+        result.textContent = `You: ${score1} Computer: ${score2} ${showResult}`;
 }
+
 
 function games(){
     computerSelection = computerPlay(getRndInteger());
     playerSelection = "Scissor";
     let showResult = playRound(playerSelection,computerSelection);
     //console.log("result is "+showResult);
-    result.textContent = `${showResult}`;
+    winner();
+    result.textContent = `You: ${score1} Computer: ${score2} ${showResult}`;
 }
 //game();
 function alertFunction() {
     alert("YAY! YOU DID IT!");
-  }
+}
+
+
+
 rock.addEventListener('click', gamer);
 paper.addEventListener('click', gamep);
 scissor.addEventListener('click', games);
@@ -121,6 +129,24 @@ result.classList.add('result');
 //result.textContent = `${showResult}`;
 
 body.appendChild(result);
+
+
+function winner(){
+    if(score1===5){
+        alert("You won!");
+        score1=0;
+        score2=0;
+    }
+    else if(score2===5){
+        alert("You lost!");
+        score1=0;
+        score2=0;
+    }
+    
+    
+}
+
+
 /*if (score<5){
     alert("You lost this game of 5 rounds!");
 }
